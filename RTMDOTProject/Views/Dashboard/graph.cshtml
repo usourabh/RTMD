@@ -1,0 +1,191 @@
+﻿<div class="row">
+    <div class="col-xl-12">
+
+        <div class="panel panel-inverse" data-sortable-id="index-1">
+            <div class="panel-heading">
+                <h4 class="panel-title">Search Here</h4>
+            </div>
+            <div class="panel-body pe-1">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group row mb-4">
+                            <label class="col-lg-4 col-form-label form-label">Employee Type </label>
+                            <div class="col-lg-8">
+                                <input type="hidden" value="" />
+                                <select class="form-select form-select-sm" data-parsley-required="true" id="selectbox_id">
+                                    <option value="">Please Select One</option>
+                                    <option value="">Freher</option>
+                                    <option value="">Experience</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group row mb-4">
+                            <label class="col-lg-4 col-form-label form-label">Department<span style="color:red">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="hidden" value="" />
+                                <select class="form-select form-select-sm" data-parsley-required="true" id="selectbox_id">
+                                    <option value="">Please Select One</option>
+                                    <option value="">Computer Science</option>
+                                    <option value="">Information Technology</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group row mb-4">
+                            <label class="col-lg-4 col-form-label form-label">Joining Date From</label>
+                            <div class="col-lg-8">
+                                <input type="hidden" value="" />
+                                <select class="form-select form-select-sm" data-parsley-required="true" id="selectbox_id">
+                                    <option value="">Please Select One</option>
+                                    <option value="">11-4-2023</option>
+                                    <option value="">12-4-2023</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group row mb-4">
+                            <label class="col-lg-4 col-form-label form-label">Blood Group</label>
+                            <div class="col-lg-8">
+                                <input type="hidden" value="" />
+                                <select class="form-select form-select-sm" data-parsley-required="true" id="selectbox_id">
+                                    <option value="">Please Select One</option>
+                                    <option value="">A</option>
+                                    <option value="">B</option>
+                                    <option value="">AB</option>
+                                    <option value="">O</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-group row mb-4">
+                            <label class="col-lg-4 col-form-label form-label">Designation<span style="color:red">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="hidden" value="" />
+                                <select class="form-select form-select-sm" data-parsley-required="true" id="selectbox_id">
+
+                                    <option value="">Please Select One</option>
+                                    <option value="">Software Developer</option>
+                                    <option value="">Web Developer</option>
+                                    <option value="">Mobile App developer</option>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group row mb-4">
+                            <label class="col-lg-4 col-form-label form-label">Joining Date To</label>
+                            <div class="col-lg-8">
+                                <input type="hidden" value="" />
+                                <select class="form-select form-select-sm" data-parsley-required="true" id="selectbox_id">
+                                    <option value="">Please Select One</option>
+                                    <option value="">15-4-2023</option>
+                                    <option value="">20-4-2023</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8"></div>
+                        <div class="col-4">
+                            <button type="button" class="btn btn-success me-1 mb-1 ml-100px">Search </button>
+                            <button type="button" class="btn btn-success me-1 mb-1">Reset </button>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-xl-12">
+
+        <div class="panel panel-inverse" data-sortable-id="index-1">
+            <div class="panel-heading">
+                <h4> Manage Employee</h4>
+
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <button type="button" class="btn btn-success me-1 mb-1 mt-15px ml-15px"> Copy</button>
+                    <button type="button" class="btn btn-success me-1 mb-1 mt-15px ml-15px"> Excel </button>
+                    <button type="button" class="btn btn-success me-1 mb-1 mt-15px ml-15px"> PDF </button>
+                    <button type="button" class="btn btn-success me-1 mb-1 mt-15px ml-15px"> Print</button>
+                    <button type="button" class="btn btn-success me-1 mb-1 mt-15px ml-15px"> Column </button>
+                    <button type="button" class="btn btn-success me-1 mb-1 mt-15px ml-15px"> Visibility</button>
+                </div>
+            </div>
+            <div class="panel-body pe-1">
+                <div id="data-table-buttons_wrapper" class="dataTables_wrapper dt-bootstrap">
+                    <div class="table-responsive">
+                        <table id="lstTable" class="table no-margin dataTable no-footer" role="grid" aria-describedby="lstTable_info">
+                            <thead>
+                                <tr role="row">
+                                    <th>SL.</th>
+                                    <th>Name. </th>
+                                    <th>NID.</th>
+                                    <th>Type</th>
+                                    <th>Department</th>
+                                    <th>Designation</th>
+                                    <th>Mobile</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Jubear Hossain</td>
+                                    <td>8091771322870011</td>
+                                    <td>Internal</td>
+                                    <td>Human Resource</td>
+                                    <td>Supervisor</td>
+                                    <td>01738465735</td>
+
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Rashid</td>
+                                    <td>555117744338801</td>
+                                    <td>External </td>
+                                    <td> Human Resource</td>
+                                    <td>Driver</td>
+                                    <td>01923001234</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>AL Amin</td>
+                                    <td>0214253365674577</td>
+                                    <td>External </td>
+                                    <td> Human Resource</td>
+                                    <td>Superviser</td>
+                                    <td>01738465711</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>Kamrul</td>
+                                    <td>987214253667854</td>
+                                    <td>External </td>
+                                    <td> Accounting</td>
+                                    <td>Superviser</td>
+                                    <td>01738465711</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

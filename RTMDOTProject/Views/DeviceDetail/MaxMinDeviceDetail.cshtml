@@ -1,0 +1,84 @@
+﻿@{
+    ViewData["Title"] = "MaxMinDeviceDetail";
+    Layout = "~/Views/Shared/sidemaster.cshtml";
+}
+<link src="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+<style>
+    td.details-control {
+        background: url('/assets/details_open.png') no-repeat center center;
+    }
+
+    tr.shown td.details-control {
+        background: url('/assets/details_close.png') no-repeat center center;
+    }
+
+    td.details-control-inr {
+        background: url('/assets/details_open.png') no-repeat center center;
+    }
+
+    tr.shown td.details-control-inr {
+        background: url('/assets/details_close.png') no-repeat center center;
+    }
+
+    table-scrollable {
+        max-height: 22.5rem;
+        overflow: auto;
+        padding-left: 20px !important;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xl-12 ui-sortable">
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <h4 class="panel-title">Device Transaction Detail  &nbsp;&nbsp;</h4>
+                <div class="panel-heading-btn">
+                    <a title="Add New" class="btn btn-primary btn-icon btn-circle btn-lg"><i class="fa fa-plus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="d-block d-lg-inline-flex me-0 me-md-3">
+                    <div class="d-block d-lg-inline-flex">
+                        <div class="dt-buttons btn-group flex-wrap" style="padding-left:20px;padding-top:20px;">
+                            <button class="btn btn-secondary buttons-copy buttons-html5 btn-sm" tabindex="0" aria-controls="tlbDataTable" type="button">
+                                <span>Copy</span>
+                            </button> <button class="btn btn-secondary buttons-csv buttons-html5 btn-sm" tabindex="0" aria-controls="tlbDataTable" type="button"><span>CSV</span></button>
+                            <button class="btn btn-secondary buttons-excel buttons-html5 btn-sm" tabindex="0" aria-controls="tlbDataTable" type="button"><span>Excel</span></button>
+                            <button class="btn btn-secondary buttons-pdf buttons-html5 btn-sm" onclick="PDFExport();" type="submit">
+                                <span>PDF</span>
+                            </button> <button class="btn btn-secondary buttons-print btn-sm" tabindex="0" aria-controls="tlbDataTable" type="button"><span>Print</span></button>
+                        </div>
+                    </div>
+                    <input type="search" style="margin-top:30px;" id="searchrec" placeholder="Search Data..." />
+                </div>
+                <div id="tbkkk"></div>
+                <div id="data-table-buttons_wrapper" class="dataTables_wrapper dt-bootstrap">
+                    <div class="table-responsive">
+                        <table id="DeviceInfo" class="table table-bordered align-middle dataTable no-footer">
+                            <thead>
+                                <tr>
+                                    <th width="20px"></th>
+                                    <th>IMEI Number</th>
+                                    <th>Temprature</th>
+                                    <th>Device Type</th>
+                                    <th>Date and Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js" defer></script>
+<script src="~/js/DeviceTransaction.js"></script>

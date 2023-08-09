@@ -1,0 +1,128 @@
+﻿@model IEnumerable<RTMDOTProject.Models.DeviceDetail>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/sidemaster.cshtml";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group row mb-3">
+            <label class="col-lg-4 col-form-label form-label">Device Name </label>
+            <div class="col-lg-8">
+                <input type="hidden" value="" />
+                <select class="form-select form-select-sm" data-parsley-required="true" id="txtDeviceName" asp-items="@(new SelectList(@ViewBag.data1,"DeviceId","DeviceNumber"))">
+                    <option selected="selected" value="0">Please select</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="button" id="btnmap" value="Show Map" />
+@***********************************************@
+<div class="row">
+    <div class="col-xl-12 ui-sortable">
+        <div class="panel panel-inverse" data-sortable-id="index-1">
+            <div class="panel-heading ui-sortable-handle">
+                <h4 class="panel-title"> Map View  </h4>
+                <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="panel-body pe-1">
+                <div id="dvMap" style="width:100%; height: 500px">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoskTdUNsjC5KfrbcReq_RgacMWi-r0zU&libraries=places"></script>
+<script type="text/javascript">
+
+                $("#btnmap").click(function () {
+                    debugger;
+                   // var DeviceId = $('#txtDeviceName').val();
+                    var DeviceId = $('select#txtDeviceName option:selected').val();
+                    debugger;
+                        $.ajax({
+                            url: '/AsignToLocation/Locationdata?DeviceId=' + DeviceId,
+                            type: 'get',
+                            contentType: 'application/json;charset=utf-8;',
+                            dataType: 'json',
+                            success: function (response) {
+                                alert("done");
+                                var markers = [response]; //@Html.Raw(ViewBag.Markers);
+
+                                debugger;
+                                var mapOptions = {
+                                    center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                                    zoom: 10,
+                                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                                };
+                                debugger;
+                                var infoWindow = new google.maps.InfoWindow();
+                                debugger;
+                                var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+                                for (i = 0; i < markers.length; i++) {
+                                    var data = markers[i]
+                                    var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                                    debugger;
+                                    var marker = new google.maps.Marker({
+                                        position: myLatlng,
+                                        map: map,
+                                        title: data.deviceName
+                                    });
+                                    debugger;
+                                    (function (marker, data) {
+                                        debugger;
+                                        google.maps.event.addListener(marker, "click", function (e) {
+                                            infoWindow.setContent(data.contactpersonname);
+                                            infoWindow.open(map, marker);
+                                        });
+                                    })(marker, data);
+                                }
+                            },
+                            error: function () {
+                                alert('data not found');
+                            }
+                        })
+                });
+
+</script>
+<script type="text/javascript">
+
+
+                var markers = @Html.Raw(ViewBag.Markers);
+                debugger;
+                window.onload = function () {
+                    debugger;
+            var mapOptions = {
+                center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var infoWindow = new google.maps.InfoWindow();
+            var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+            for (i = 0; i < markers.length; i++) {
+                var data = markers[i]
+                var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                var marker = new google.maps.Marker({
+                    position: myLatlng,
+                    map: map,
+                    title: data.title
+                });
+                (function (marker, data) {
+                    google.maps.event.addListener(marker, "click", function (e) {
+                        infoWindow.setContent(data.description);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, data);
+            }
+                }
+
+</script>

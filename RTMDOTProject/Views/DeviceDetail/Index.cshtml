@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/sidemaster.cshtml";
+}
+
+<div class="row">
+    <div class="col-xl-12 ui-sortable">
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <h4 class="panel-title">Device Details &nbsp;&nbsp;</h4>
+                <div class="panel-heading-btn">
+                    <a title="Add New" onclick="showModal()" class="btn btn-primary btn-icon btn-circle btn-lg"><i class="fa fa-plus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+
+                    <div class="modal" tabindex="-1" id="SaleModal" role="dialog">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header bg-success">
+                                    <h5 class="modal-title text-white"> Device Details</h5>
+                                    <button type="button" class="btn-close" style="border:none;" data-bs-dismiss="modal" aria-label="Close">
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3 " style="display:none;">
+                                                <label class="col-lg-4 col-form-label form-label ">Device ID</label>
+                                                <div class="col-lg-8 ">
+                                                    <input class="form-control" type="text" id="txtDeviceId" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-2 col-form-label form-label">IMEI Number</label>
+                                                <div class="col-lg-10">
+                                                    <input class="form-control" type="text" id="txtIemiNumbers" name="txtIemiNumbers" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-2 col-form-label form-label">Device Number</label>
+                                                <div class="col-lg-10">
+                                                    <input class="form-control" type="text" id="txtDeviceNumber" name="txtIemiNumbers" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Device Type </label>
+                                                <div class="col-lg-8">
+                                                    <input type="hidden" value="" />
+                                                    <select class="form-select form-select-sm" data-parsley-required="true" id="dlDeviceType" asp-items="@(new SelectList(@ViewBag.data,"DeviceType","DeviceName"))">
+                                                        <option>Please select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Device Name</label>
+                                                <div class="col-lg-8 ">
+                                                    <input class="form-control" type="text" id="txtDeviceName" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Minimum Value  </label>
+                                                <div class="col-lg-8">
+                                                    <input class="form-control" type="text" id="txtMinimumValue" name="txtClientName" data-parsley-required="true">
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Maximum Value</label>
+                                                <div class="col-lg-8 ">
+                                                    <input class="form-control" type="text" id="txtMaximumValue" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Longitude</label>
+                                                <div class="col-lg-8 ">
+                                                    <input class="form-control" type="text" id="txtLongitude" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Latitude</label>
+                                                <div class="col-lg-8">
+                                                    <input class="form-control" type="text" id="txtLatitude" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Branch</label>
+                                                <div class="col-lg-8 ">
+                                                    <input class="form-control" type="text" id="txtBranch" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Region Name</label>
+                                                <div class="col-lg-8">
+                                                    <input class="form-control" type="text" id="txtRegionName" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">ASM Area</label>
+                                                <div class="col-lg-8 ">
+                                                    <input class="form-control" type="text" id="txtASMArea" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">SO Territory</label>
+                                                <div class="col-lg-8">
+                                                    <input class="form-control" type="text" id="txtSoterritory" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">RD Code</label>
+                                                <div class="col-lg-8 ">
+                                                    <input class="form-control" type="text" id="txtRDCode" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">RD Name</label>
+                                                <div class="col-lg-8">
+                                                    <input class="form-control" type="text" id="txtRDName" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>   <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Town Class Name</label>
+                                                <div class="col-lg-8 ">
+                                                    <input class="form-control" type="text" id="txtTownClassName" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">RD Town</label>
+                                                <div class="col-lg-8">
+                                                    <input class="form-control" type="text" id="txtRDTown" name="txtClientName" data-parsley-required="true">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-4 col-form-label form-label">Status</label>
+                                                <div class="col-lg-8">
+                                                    <input type="checkbox" id="txtStatus" data-parsley-required="true" />
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group row mb-3">
+                                                <label class="col-lg-2 col-form-label form-label">Description</label>
+                                                <div class="col-lg-10">
+                                                    <textarea class="form-control" type="text" id="txtDescription" name="txtClientName" data-parsley-required="true"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success" onclick="AddDevice();" id="btnAdd">Save </button>
+                                    <button type="submit" class="btn btn-success" id="btnUpdate">Update </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>  <br /><br /><br />
+                    <div id="data-table-buttons_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                        <div class="table-responsive">
+                            <table id="DeviceInfo" class="table table-striped table-bordered align-middle">
+                                <thead>
+                                    <tr>
+                                        <th>SR No.</th>
+                                        <th>IMEI Number</th>
+                                        <th>Device Number</th>
+                                        <th>Device Name </th>
+                                        <th>Device Type </th>
+                                        <th>Maximum Value</th>
+                                        <th>Minimum Value</th>
+                                        <th>Longitude</th>
+                                        <th>Latitude </th>
+                                        <th>Branch</th>
+                                        <th>Region Name</th>
+                                        <th>ASM Area</th>
+                                        <th>SO Territory</th>
+                                        <th>RD Code</th>
+                                        <th>RD Name</th>
+                                        <th>Town Class Name</th>
+                                        <th>RD Town</th>
+                                        <th>Status </th>
+                                        <th>Description</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table_device">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@section scripts {
+
+    <link href="~/otherfiles/assets/plugins/datatables.net-bs5/css/dataTables.bootstrap5.min.css?@DateTime.Now.Ticks" rel="stylesheet" />
+    <link href="~/otherfiles/assets/plugins/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" />
+    <link href="~/otherfiles/assets/plugins/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" />
+    <script src="~/otherfiles/assets/plugins/datatables.net/js/jquery.dataTables.min.js?@DateTime.Now.Ticks"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-bs5/js/dataTables.bootstrap5.min.js?@DateTime.Now.Ticks"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-responsive/js/dataTables.responsive.min.js?@DateTime.Now.Ticks"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js?@DateTime.Now.Ticks"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/pdfmake/build/pdfmake.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/pdfmake/build/vfs_fonts.js"></script>
+    <script src="~/otherfiles/assets/plugins/jszip/dist/jszip.min.js"></script>
+    <link href="~/otherfiles/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="~/otherfiles/assets/plugins/select2/dist/js/select2.min.js"></script>
+    <script src="~/js/DeviceDetail.js"></script>
+
+    <script>
+        function showModal() {
+            $('#SaleModal').modal('show');
+            $('#btnAdd').show();
+            $('#btnUpdate').hide();
+        }
+    </script>
+
+}
+
+
+
+

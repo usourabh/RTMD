@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]  </title>
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/otherfiles/assets/css/vendor.min.css" rel="stylesheet" />
+    <link href="~/otherfiles/assets/css/default/app.min.css" rel="stylesheet" />
+    <link href="~/otherfiles/assets/plugins/jvectormap-next/jquery-jvectormap.css" rel="stylesheet" />
+    <link href="~/otherfiles/assets/plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/otherfiles/assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <link href="~/otherfiles/assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="~/css/fstdropdown.min.css" rel="stylesheet" />
+    <link href="~/css/jquery.toast.css" rel="stylesheet" />
+    <link href="~/css/photoviewer.css" rel="stylesheet">
+    <style type="text/css">
+        #button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 30px;
+            background-color: #eee;
+            border: solid #ccc 1px;
+            cursor: pointer;
+        }
+
+        #overlay {
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+            height: 100%;
+            display: none;
+            background: rgba(0,0,0,0.6);
+        }
+
+        .cv-spinner {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px #ddd solid;
+            border-top: 4px #2e93e6 solid;
+            border-radius: 50%;
+            animation: sp-anime 0.8s infinite linear;
+        }
+
+        @@keyframes sp-anime {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .is-hide {
+            display: none;
+        }
+
+        .rounded {
+            border-radius: 0.1875rem !important;
+        }
+
+        .img {
+            vertical-align: middle;
+            border-style: none;
+        }
+
+        .img-preview {
+            max-height: 5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="loader" class="app-loader">
+        <span class="spinner"></span>
+    </div>
+
+    <div id="app" class="app app-header-fixed app-sidebar-fixed ">
+        <div id="header" class="app-header app-header-inverse bg-white">
+            <div class="navbar-header">
+                <a href="index.html" class="navbar-brand"><span class="navbar-logo"></span> <b class="text-black">Admin</b> </a>
+                <button type="button" class="navbar-mobile-toggler" data-toggle="app-sidebar-mobile">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-nav">
+                <div class="navbar-item navbar-user dropdown">
+                    <a href="#" class="navbar-link dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+                        <img src="~/otherfiles/assets/img/user/user-10.jpg" alt="" />
+                        <span>
+                            <span class="d-none d-md-inline text-black">Admin</span>
+                            <b class="caret text-black"></b>
+                        </span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end me-1 text-black">
+                        <div class="dropdown-divider"></div>
+                        <a href="/Home/LogOut" class="dropdown-item">Log Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="sidebar" class="app-sidebar">
+            <div class="app-sidebar-content bg-black" data-scrollbar="true" data-height="100%">
+                <div class="menu bg-black">
+                    <div class="menu-profile">
+                        <a href="javascript:;" class="menu-profile-link" data-toggle="app-sidebar-profile" data-target="#appSidebarProfileMenu">
+                            <div class="menu-profile-cover with-shadow"></div>
+                            <div class="menu-profile-image">
+                                <img src="~/assets/img/user/user-13.jpg" alt="" />
+                            </div>
+                            <div class="menu-profile-info">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-grow-1 text-white">
+                                        Admin
+                                    </div>
+                                    @*<div class="menu-caret ms-auto"></div>*@
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="/Dashboard/" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fa fa-sitemap text-white"></i>
+                            </div>
+                            <div class="menu-text text-white">Home</div>
+                            <div class="menu-caret text-white"></div>
+                        </a>
+                    </div>
+                    @*<div class="menu-item has-sub">
+                            <a href="/DeviceDetail/AllDeviceDetails" class="menu-link">
+                                <div class="menu-icon">
+                                    <i class="fa fa-list text-white">
+                                    </i>
+                                </div>
+                                <div class="menu-text text-white"> Device Detail</div>
+                                <div class="menu-caret text-white"></div>
+                            </a>
+                        </div>*@
+                    <div class="menu-item has-sub">
+                        <a href="/DeviceTransaction/Index" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fa fa-star text-white">
+                                </i>
+                            </div>
+                            <div class="menu-text text-white"> Device Transactions Details</div>
+                            <div class="menu-caret text-white"></div>
+                        </a>
+                    </div>
+                    <div class="menu-item has-sub">
+                        <a href="/Master/RDMaster" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fa fa-graduation-cap text-white"></i>
+                            </div>
+                            <div class="menu-text text-white">RD Master</div>
+                            <div class="menu-caret text-white"></div>
+                        </a>
+                    </div>
+                    @*<div class="menu-item has-sub">
+                            <a href="/Master/Survey" class="menu-link">
+                                <div class="menu-icon">
+                                    <i class="fa fa-sticky-note text-white"></i>
+                                </div>
+                                <div class="menu-text text-white">Survey Transaction</div>
+                                <div class="menu-caret text-white"></div>
+                            </a>
+                        </div>*@
+                    @*<div class="menu-item has-sub">
+                            <a href="/QR/Index" class="menu-link">
+                                <div class="menu-icon">
+                                    <i class="fa fa-star text-white"></i>
+                                </div>
+                                <div class="menu-text text-white"> QR Details</div>
+                                <div class="menu-caret text-white"></div>
+                            </a>
+                        </div>*@
+
+                    <div class="menu-item has-sub">
+                        <a href="javascript:;" class="menu-link">
+                            <div class="menu-icon">
+                                <i class="fa fa-globe text-white"></i>
+                            </div>
+                            <div class="menu-text text-white"> REPORTS </div>
+                            <div class="menu-caret text-white"></div>
+                        </a>
+                        <div class="menu-submenu">
+                            <div class="menu-item">
+                                <a href="/Report/TimeWiseReport" class="menu-link"><div class="menu-text text-white">Device report</div></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="menu-item d-flex">
+                        <a href="javascript:;" class="app-sidebar-minify-btn ms-auto" data-toggle="app-sidebar-minify"><i class="fa fa-angle-double-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="app-sidebar-bg"></div>
+        <div class="app-sidebar-mobile-backdrop"><a href="#" data-dismiss="app-sidebar-mobile" class="stretched-link"></a></div>
+        <div id="content" class="app-content">
+            @RenderBody()
+        </div>
+
+
+        <div class="theme-panel">
+            <a href="javascript:;" data-toggle="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
+            <div class="theme-panel-content" data-scrollbar="true" data-height="100%">
+                <h5>App Settings</h5>
+
+                <div class="theme-list">
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-red" data-theme-class="theme-red" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Red">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-pink" data-theme-class="theme-pink" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Pink">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-orange" data-theme-class="theme-orange" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Orange">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-yellow" data-theme-class="theme-yellow" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Yellow">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-lime" data-theme-class="theme-lime" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Lime">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-green" data-theme-class="theme-green" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Green">&nbsp;</a></div>
+                    <div class="theme-list-item active"><a href="javascript:;" class="theme-list-link bg-teal" data-theme-class="" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Default">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-cyan" data-theme-class="theme-cyan" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Cyan">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-blue" data-theme-class="theme-blue" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Blue">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-purple" data-theme-class="theme-purple" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Purple">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-indigo" data-theme-class="theme-indigo" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Indigo">&nbsp;</a></div>
+                    <div class="theme-list-item"><a href="javascript:;" class="theme-list-link bg-black" data-theme-class="theme-gray-600" data-toggle="theme-selector" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-container="body" data-bs-title="Black">&nbsp;</a></div>
+                </div>
+
+                <div class="theme-panel-divider"></div>
+                <div class="row mt-10px">
+                    <div class="col-8 control-label text-dark fw-bold">
+                        <div>Dark Mode <span class="badge bg-primary ms-1 py-2px position-relative" style="top: -1px;">NEW</span></div>
+                        <div class="lh-14">
+                            <small class="text-dark opacity-50">
+                                Adjust the appearance to reduce glare and give your eyes a break.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-4 d-flex">
+                        <div class="form-check form-switch ms-auto mb-0">
+                            <input type="checkbox" class="form-check-input" name="app-theme-dark-mode" id="appThemeDarkMode" value="1" />
+                            <label class="form-check-label" for="appThemeDarkMode">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="theme-panel-divider"></div>
+
+                <div class="row mt-10px align-items-center">
+                    <div class="col-8 control-label text-dark fw-bold">Header Fixed</div>
+                    <div class="col-4 d-flex">
+                        <div class="form-check form-switch ms-auto mb-0">
+                            <input type="checkbox" class="form-check-input" name="app-header-fixed" id="appHeaderFixed" value="1" checked />
+                            <label class="form-check-label" for="appHeaderFixed">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-10px align-items-center">
+                    <div class="col-8 control-label text-dark fw-bold">Header Inverse</div>
+                    <div class="col-4 d-flex">
+                        <div class="form-check form-switch ms-auto mb-0">
+                            <input type="checkbox" class="form-check-input" name="app-header-inverse" id="appHeaderInverse" value="1" />
+                            <label class="form-check-label" for="appHeaderInverse">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-10px align-items-center">
+                    <div class="col-8 control-label text-dark fw-bold">Sidebar Fixed</div>
+                    <div class="col-4 d-flex">
+                        <div class="form-check form-switch ms-auto mb-0">
+                            <input type="checkbox" class="form-check-input" name="app-sidebar-fixed" id="appSidebarFixed" value="1" checked />
+                            <label class="form-check-label" for="appSidebarFixed">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-10px align-items-center">
+                    <div class="col-8 control-label text-dark fw-bold">Sidebar Grid</div>
+                    <div class="col-4 d-flex">
+                        <div class="form-check form-switch ms-auto mb-0">
+                            <input type="checkbox" class="form-check-input" name="app-sidebar-grid" id="appSidebarGrid" value="1" />
+                            <label class="form-check-label" for="appSidebarGrid">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-10px align-items-center">
+                    <div class="col-md-8 control-label text-dark fw-bold">Gradient Enabled</div>
+                    <div class="col-md-4 d-flex">
+                        <div class="form-check form-switch ms-auto mb-0">
+                            <input type="checkbox" class="form-check-input" name="app-gradient-enabled" id="appGradientEnabled" value="1" />
+                            <label class="form-check-label" for="appGradientEnabled">&nbsp;</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theme-panel-divider"></div>
+                <h5>Admin Design (5)</h5>
+
+                <div class="theme-version">
+                    <div class="theme-version-item">
+                        <a href="index_v2.html" class="theme-version-link active">
+                            <span style="background-image: url(../assets/img/theme/default.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/transparent/index_v2.html" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/transparent.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/apple/index_v2.html" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/apple.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/material/index_v2.html" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/material.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/facebook/index_v2.html" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/facebook.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/google/index_v2.html" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/google.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="theme-panel-divider"></div>
+                <h5>Language Version (7)</h5>
+
+                <div class="theme-version">
+                    <div class="theme-version-item">
+                        <a href="index-2.html" class="theme-version-link active">
+                            <span style="background-image: url(../assets/img/version/html.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/ajax/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/version/ajax.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/angularjs/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/version/angular1x.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/angularjs13/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/version/angular10x.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="javascript:alert('Laravel Version only available in downloaded version.');" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/version/laravel.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/vuejs/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/version/vuejs.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/admin/reactjs/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/version/reactjs.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="javascript:alert('.NET Core 5.0 MVC Version only available in downloaded version.');" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/version/dotnet.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="theme-panel-divider"></div>
+                <h5>Frontend Design (5)</h5>
+
+                <div class="theme-version">
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/frontend/one-page-parallax/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/one-page-parallax.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/frontend/e-commerce/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/e-commerce.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/frontend/blog/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/blog.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/frontend/forum/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/forum.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                    <div class="theme-version-item">
+                        <a href="https://seantheme.com/color-admin/frontend/corporate/" class="theme-version-link">
+                            <span style="background-image: url(../assets/img/theme/corporate.jpg);" class="theme-version-cover"></span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="theme-panel-divider"></div>
+                <a href="https://seantheme.com/color-admin/documentation/" class="btn btn-dark d-block w-100 rounded-pill mb-10px" target="_blank"><b>Documentation</b></a>
+                <a href="javascript:;" class="btn btn-default d-block w-100 rounded-pill" data-toggle="reset-local-storage"><b>Reset Local Storage</b></a>
+            </div>
+        </div>
+
+
+        <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+    </div>
+
+    <script src="~/otherfiles/assets/js/vendor.min.js" type="text/javascript"></script>
+    <script src="~/otherfiles/assets/js/app.min.js" type="text/javascript"></script>
+    <script src="~/otherfiles/assets/js/theme/default.min.js" type="text/javascript"></script>
+    <script src="~/css/fstdropdown.min.js"></script>
+    <script src="~/css/jquery.toast.js"></script>
+    <script src="~/css/moment.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/parsleyjs/dist/parsley.min.js"></script>
+    <script src="~/otherfiles/assets/plugins/select2/dist/js/select2.min.js"></script>
+    <script src="~/otherfiles/assets/extplugins/rocket-loader.min.js" data-cf-settings="381af62713484f4d1e7b80c3-|49" defer=""></script>
+    <script src="~/css/photoviewer.js"></script>
+   
+    @RenderSection("Scripts", required: false)
+</body>
+
+<!-- Mirrored from seantheme.com/color-admin/admin/html/page_with_light_sidebar.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 30 May 2022 15:52:51 GMT -->
+</html>

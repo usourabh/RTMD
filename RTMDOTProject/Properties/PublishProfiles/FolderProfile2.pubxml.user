@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <History>True|2023-08-04T06:40:50.6268769Z;True|2023-08-04T11:03:15.2334540+05:30;True|2023-08-02T18:40:18.0403575+05:30;True|2023-08-02T18:36:09.4452930+05:30;True|2023-08-02T18:27:42.0636196+05:30;True|2023-08-02T17:52:56.5675279+05:30;True|2023-08-02T17:51:58.3757714+05:30;True|2023-08-02T17:38:43.3604005+05:30;True|2023-08-02T17:36:16.9033391+05:30;True|2023-05-24T11:15:14.5452375+05:30;True|2023-05-23T11:54:20.5964258+05:30;False|2023-05-23T11:50:45.4769049+05:30;</History>
+    <_PublishTargetUrl>D:\Publish WebApp\RTMD</_PublishTargetUrl>
+  </PropertyGroup>
+</Project>

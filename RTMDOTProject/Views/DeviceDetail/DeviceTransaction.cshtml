@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/sidemaster.cshtml";
+}
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/DeviceTransaction.js"></script>
+
+
+<div class="row">
+    <div class="col-xl-12 ui-sortable">
+        <div class="panel panel-inverse">
+            <div class="panel-heading">
+                <h4 class="panel-title">Device Transaction  &nbsp;&nbsp;</h4>
+                <div class="panel-heading-btn">
+                    <a title="Add New" class="btn btn-primary btn-icon btn-circle btn-lg"><i class="fa fa-plus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-default" data-toggle="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-success" data-toggle="panel-reload"><i class="fa fa-redo"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-warning" data-toggle="panel-collapse"><i class="fa fa-minus"></i></a>
+                    <a href="javascript:;" class="btn btn-xs btn-icon btn-danger" data-toggle="panel-remove"><i class="fa fa-times"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <div id="data-table-buttons_wrapper" class="dataTables_wrapper dt-bootstrap5 no-footer">
+                    <div class="table-responsive">
+                        <table id="DeviceInfo" class="table table-striped table-bordered align-middle">
+                            <thead>
+                                <tr>           
+                                    <th>TmpsId</th>
+                                    <th>Raw Data</th>
+                                    <th>TDate</th>                                            
+                                </tr>
+                            </thead>
+                            <tbody id="table_trans">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
