@@ -86,31 +86,43 @@ function ShowDeviceTransactionData() {
             $.each(result, function (index, item) {
                 object += '<tr ticketid="' + item.IEMINumber + '">';
                 object += '<td  class="details-control"></td>';
+                object += '<td>' + (index + 1) + '</td>';
                 if (item.Img1 == '/images/')
                     object += '<td></td>';
                 else
                     object += '<td><a onclick="VeiwImage(this);" dataurl="http://tsen.ecosmartdc.com' + item.Img1 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"><img height="100" src="http://tsen.ecosmartdc.com/' + item.Img1 + '" alt="" /></a><a style="display:none" dataurl="http://tsen.ecosmartdc.com' + item.Img2 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"></a><a style="display:none" dataurl="http://tsen.ecosmartdc.com' + item.Img3 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"></a></td>';
 
-                if (parseFloat(item.Temp) > 24 || parseFloat(item.Temp) < 18) {
-                    object += '<td style="color:red;"class="blink" ><marquee direction ="up"width="100%" behavior="alternate" scrollamount="2" scrolldelay=".1">' + item.Temp + '</marquee></td>';
-                }
-                else {
-                    object += '<td style="color:black;">' + item.Temp + '</td>';
-                }
-                object += '<td>' + item.InstalledOn + '</td>';
-                object += '<td>' + item.ApprovedPersonMobileNo + '</td>';
+                //if (parseFloat(item.Temp) > 24 || parseFloat(item.Temp) < 18) {
+                //    object += '<td style="color:red;"class="blink" ><marquee direction ="up"width="100%" behavior="alternate" scrollamount="2" scrolldelay=".1">' + item.Temp + '</marquee></td>';
+                //}
+                //else {
+                //    object += '<td style="color:black;">' + item.Temp + '</td>';
+                //}
+                //object += '<td>' + item.InstalledOn + '</td>';
+                //object += '<td>' + item.ApprovedPersonMobileNo + '</td>';
+                //object += '<td>' + item.RDName + '</td>';
+                //object += '<td>' + item.Phone + '</td>';
+                //object += '<td>' + item.ContactPerson + '</td>';
+                //object += '<td>' + item.Branch + '</td>';
+                //object += '<td>' + item.RegionName + '</td>';
+                //object += '<td>' + item.ASMArea + '</td>';
+                //object += '<td>' + item.Soterritory + '</td>';
+                //object += '<td>' + item.IEMINumber + '</td>';
+                //object += '<td>' + item.DeviceType + '</td>';
+                //object += '<td>' + item.EmailId + '</td>';
+                //object += '<td>' + item.DatedOn + '</td>';
+                //object += '</tr>';
+
+                object += '<td>' + item.RDCode + '</td>';
                 object += '<td>' + item.RDName + '</td>';
-                object += '<td>' + item.Phone + '</td>';
-                object += '<td>' + item.ContactPerson + '</td>';
-                object += '<td>' + item.Branch + '</td>';
-                object += '<td>' + item.RegionName + '</td>';
-                object += '<td>' + item.ASMArea + '</td>';
-                object += '<td>' + item.Soterritory + '</td>';
+                object += '<td>' + item.Address + '</td>';
                 object += '<td>' + item.IEMINumber + '</td>';
-                object += '<td>' + item.DeviceType + '</td>';
-                object += '<td>' + item.EmailId + '</td>';
-                object += '<td>' + item.DatedOn + '</td>';
-                object += '</tr>';
+                object += '<td>' + item.visicooler + '</td>';
+                object += '<td>' + item.qrcode + '</td>';
+                object += '<td>' + item.Phone + '</td>';
+
+               object += '</tr>';
+
             })
 
             $('#DeviceInfo > tbody').html(object);

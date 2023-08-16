@@ -9299,19 +9299,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\soura\\.nuget\\packages\\": {}
+    "C:\\Users\\Ashish Kumar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\AJEEVI\\RTMD\\RTMDOTProject\\RTMDOTProject.csproj",
+      "projectUniqueName": "E:\\RTMD\\RTMDOTProject\\RTMDOTProject.csproj",
       "projectName": "RTMDOTProject",
-      "projectPath": "D:\\AJEEVI\\RTMD\\RTMDOTProject\\RTMDOTProject.csproj",
-      "packagesPath": "C:\\Users\\soura\\.nuget\\packages\\",
-      "outputPath": "D:\\AJEEVI\\RTMD\\RTMDOTProject\\obj\\",
+      "projectPath": "E:\\RTMD\\RTMDOTProject\\RTMDOTProject.csproj",
+      "packagesPath": "C:\\Users\\Ashish Kumar\\.nuget\\packages\\",
+      "outputPath": "E:\\RTMD\\RTMDOTProject\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\soura\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Ashish Kumar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9410,7 +9410,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.413\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.426\\RuntimeIdentifierGraph.json"
       }
     }
   },

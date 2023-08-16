@@ -16,23 +16,37 @@ function ShowRDData() {
             var result = JSON.parse(strresult);
             var object = '';
             $.each(result, function (index, item) {
+               // object += '<tr>';
+               // object += '<td>' + (index + 1)+'</td>';
+               // object += '<td>' + item.RDCode + '</td>';
+               // object += '<td>' + item.RDName + '</td>';
+               //// //object += '<td>' + item.RDType + '</td>';
+               // object += '<td>' + item.BranchName + '</td>';
+               // object += '<td>' + item.RegionName + '</td>';
+               // object += '<td>' + item.ASMArea + '</td>';                
+               // object += '<td>' + item.SOTerritory + '</td>';
+               // object += '<td>' + item.Town + '</td>';
+               // object += '<td>' + item.State + '</td>';
+               // object += '<td>' + item.Address + '</td>';
+               // object += '<td>' + item.Phone + '</td>';
+               // object += '<td>' + item.ContactPerson + '</td>';               
+               // object += '<td>' + item.MobileNo + '</td>';
+               // object += '<td>' + item.EmailId + '</td>';
+                ////object += '<td>' + item.Description + '</td>';
+  
                 object += '<tr>';
-                object += '<td>' + (index + 1)+'</td>';
+                object += '<td>' + (index + 1) + '</td>';
+                object += '<td>' + item.Image + '</td>';
                 object += '<td>' + item.RDCode + '</td>';
                 object += '<td>' + item.RDName + '</td>';
-                //object += '<td>' + item.RDType + '</td>';
-                object += '<td>' + item.BranchName + '</td>';
-                object += '<td>' + item.RegionName + '</td>';
-                object += '<td>' + item.ASMArea + '</td>';                
-                object += '<td>' + item.SOTerritory + '</td>';
-                object += '<td>' + item.Town + '</td>';
-                object += '<td>' + item.State + '</td>';
                 object += '<td>' + item.Address + '</td>';
+                object += '<td>' + item.IEMINumber + '</td>';
+                object += '<td>' + item.visicooler + '</td>';
+                object += '<td>' + item.Qrcode + '</td>';
                 object += '<td>' + item.Phone + '</td>';
-                object += '<td>' + item.ContactPerson + '</td>';               
-                object += '<td>' + item.MobileNo + '</td>';
-                object += '<td>' + item.EmailId + '</td>';
-                //object += '<td>' + item.Description + '</td>';
+
+              
+              
                 if (item.IsActive = 1)
                 {
                     object += '<td>Active</td>';
