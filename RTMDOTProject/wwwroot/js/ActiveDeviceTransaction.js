@@ -36,7 +36,7 @@
 });
 
 function formatVehicle(item) {
-    var InnerGrid = '<div class="table-scrollable vehicletable" style="padding-left:10px;margin:10px;"><table class="table"><thead><tr><th>Sr. No.</th><th>Box Number </th><th> Latitude and Longitude</th><th> Carbon Ratio </th><th> View On Map </th><th> Dated On </th><th> Location Status </th></tr></thead><tbody>';
+    var InnerGrid = '<div class="table-scrollable vehicletable" style="padding-left:10px;margin:10px;"><table class="table"><thead><tr><th>Sr. No.</th><th>IMEI Number </th><th> Latitude and Longitude</th><th> Carbon Ratio </th><th> View On Map </th><th> Dated On </th><th> Location Status </th></tr></thead><tbody>';
     if (item != null && item.length > 0) {
         $.each(item, function (i, info) {
             if (info.CurrentActionStatus == 2 || info.TotalMin > 15)
@@ -85,10 +85,10 @@ function ShowDeviceTransactionData() {
                 object += '<tr ticketid="' + item.IEMINumber + '">';
                 object += '<td  class="details-control"></td>';
                 object += '<td>' + (index + 1) + '</td>';
-                if (item.Img1 == '/images/')
-                    object += '<td></td>';
-                else
-                    object += '<td><a onclick="VeiwImage(this);" dataurl="http://tsen.ecosmartdc.com' + item.Img1 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"><img height="100" src="http://tsen.ecosmartdc.com/' + item.Img1 + '" alt="" /></a><a style="display:none" dataurl="http://tsen.ecosmartdc.com' + item.Img2 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"></a><a style="display:none" dataurl="http://tsen.ecosmartdc.com' + item.Img3 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"></a></td>';
+                //if (item.Img1 == '/images/')
+                //    object += '<td></td>';
+                //else
+                //    object += '<td><a onclick="VeiwImage(this);" dataurl="http://tsen.ecosmartdc.com' + item.Img1 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"><img height="100" src="http://tsen.ecosmartdc.com/' + item.Img1 + '" alt="" /></a><a style="display:none" dataurl="http://tsen.ecosmartdc.com' + item.Img2 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"></a><a style="display:none" dataurl="http://tsen.ecosmartdc.com' + item.Img3 + '" data-gallery="photoviewer" href="javascript:void(0)" data-group="b"></a></td>';
                
                 //object += '<td>' + item.InstalledOn + '</td>';
                 //object += '<td>' + item.ApprovedPersonMobileNo + '</td>';
@@ -106,15 +106,16 @@ function ShowDeviceTransactionData() {
                 //object += '</tr>';
              
                
-         
+
+                object += '<td>' + item.Img3 + '</td>';
                 object += '<td>' + item.RDCode + '</td>';
                 object += '<td>' + item.RDName + '</td>';
                 object += '<td>' + item.Address + '</td>';
                 object += '<td>' + item.IEMINumber + '</td>';
-                object += '<td>' + item.visicooler + '</td>';
-                object += '<td>' + item.qrcode + '</td>';
+                object += '<td>' + item.VisicoolerSerialNo + '</td>';
+                object += '<td>' + item.QrCodeNumber + '</td>';
                 object += '<td>' + item.Phone + '</td>';
-                object += '<tr>';
+                object += '</tr>';
             })
 
             $('#DeviceInfo > tbody').html(object);
@@ -321,7 +322,7 @@ function ShowMapPopup(objthis) {
 
     contentString = "<div style='float:right;width:300px; padding: 10px;font-size: 14px;background-color: #33414E;color: white;'>" +
         "<br/>RD Name- " + RdName +
-        "<br/>Box Number-" + Imei +
+        "<br/>IMEI Number-" + Imei +
         "<br/>Carbon ratio- " + status +
         "<br/>Sync On- " + DatedOn +
         "</div>";

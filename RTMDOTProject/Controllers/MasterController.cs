@@ -33,15 +33,26 @@ namespace RTMDOTProject.Controllers
         }
         public JsonResult GetRDDetail()
         {
+
+            //object[] parameters = {
+            //                              "",
+            //                              "",
+            //                              "",
+            //                              0,
+            //                              -1,
+            //                            };
             object[] parameters = {
+
                                           "",
                                           "",
                                           "",
                                           0,
-                                          -1,
+                                          500,
                                         };
+           
 
-            string Result = _dataRepository.ExcuteRowSqlCommand(StoredProcedureHelper.spGetRDMasterData, parameters);
+            // string Result = _dataRepository.ExcuteRowSqlCommand(StoredProcedureHelper.spGetRDMasterData, parameters);
+            string Result = _dataRepository.ExcuteRowSqlCommand(StoredProcedureHelper.spGetDevice_WithPaging, parameters);
 
             return new JsonResult(Result);
 
@@ -109,8 +120,5 @@ namespace RTMDOTProject.Controllers
             db.SaveChanges();
             return new JsonResult("Record Updated");
         }
-
-
-
     }
 }

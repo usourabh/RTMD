@@ -1,7 +1,7 @@
 ﻿a = 1;
 $(document).ready(function () {
     ShowRDData();
-    ShowSurveyData();
+    //ShowSurveyData();
     $('#example').show();  
 });
 
@@ -36,16 +36,16 @@ function ShowRDData() {
   
                 object += '<tr>';
                 object += '<td>' + (index + 1) + '</td>';
-                object += '<td>' + item.Image + '</td>';
+                object += '<td>' + item.Img2 + '</td>';
                 object += '<td>' + item.RDCode + '</td>';
                 object += '<td>' + item.RDName + '</td>';
                 object += '<td>' + item.Address + '</td>';
                 object += '<td>' + item.IEMINumber + '</td>';
-                object += '<td>' + item.visicooler + '</td>';
-                object += '<td>' + item.Qrcode + '</td>';
+                object += '<td>' + item.VisicoolerSerialNo + '</td>';
+                object += '<td>' + item.QrCodeNumber + '</td>';
                 object += '<td>' + item.Phone + '</td>';
 
-              
+               
               
                 if (item.IsActive = 1)
                 {
@@ -72,47 +72,46 @@ function ShowRDData() {
     });
 };
 
-function ShowSurveyData() {
-    $.ajax({
-        url: "/Master/GetSurveyDetail",
-        type: 'get',
-        dataType: 'json',
-        contentType: 'application/json;charset=utf-8;',
-        success: function (strresult) {
-            debugger             
-            var result = JSON.parse(strresult);
-            var object = '';
-            $.each(result, function (index, item) {
-                object += '<tr>';
-                object += '<td>' + (index + 1) + '</td>';
-                object += '<td>' + item.DeviceCode + '</td>';          
-                object += '<td>' + item.RDCode + '</td>';          
-                object += '<td>' + item.Lat + '</td>';
-                object += '<td>' + item.Lng + '</td>';
-                object += '<td>' + item.ApprovedBy + '</td>';
-                object += '<td>' + item.ApprovedPersonMobileNo + '</td>';
-                object += '<td>' + item.Img1 + '</td>';
-                object += '<td>' + item.Img2 + '</td>';
-                object += '<td>' + item.Img3 + '</td>';
-                object += '<td>' + item.Remark + '</td>';
+//function ShowSurveyData() {
+//    $.ajax({
+//        url: "/Master/GetSurveyDetail",
+//        type: 'get',
+//        dataType: 'json',
+//        contentType: 'application/json;charset=utf-8;',
+//        success: function (strresult) {
+//            debugger             
+//            var result = JSON.parse(strresult);
+//            var object = '';
+//            $.each(result, function (index, item) {
+//                object += '<tr>';
+//                object += '<td>' + (index + 1) + '</td>';
+//                object += '<td>' + item.DeviceCode + '</td>';          
+//                object += '<td>' + item.RDCode + '</td>';          
+//                object += '<td>' + item.Lat + '</td>';
+//                object += '<td>' + item.Lng + '</td>';
+//                object += '<td>' + item.ApprovedBy + '</td>';
+//                object += '<td>' + item.ApprovedPersonMobileNo + '</td>';
+//                object += '<td>' + item.Img1 + '</td>';
+//                object += '<td>' + item.Img2 + '</td>';
+//                object += '<td>' + item.Img3 + '</td>';
+//                object += '<td>' + item.Remark + '</td>';
               
-                object += '</tr>';
-            })
-            $('#Surveyexample > tbody').html(object);
-            $('#Surveyexample').dataTable({
-                dom: 'Bfrtip',
-                buttons: [
-                    'copy', 'csv', 'excel', 'pdf', 'print'
-                ]
-            });
-        },
-        error: function () {
-            alert("data can't get");
-        }
-    });
-};
+//                object += '</tr>';
+//            })
+//            $('#Surveyexample > tbody').html(object);
+//            $('#Surveyexample').dataTable({
+//                dom: 'Bfrtip',
+//                buttons: [
+//                    'copy', 'csv', 'excel', 'pdf', 'print'
+//                ]
+//            });
+//        },
+//        error: function () {
+//            alert("data can't get");
+//        }
+//    });
+//};
 //to add Device record
-
 function AddRD() {
     var fbStatus;
     if ($("#txtStatus").is(':checked')) {
@@ -133,9 +132,9 @@ function AddRD() {
         Town: $('#txtTown').val(),
         State: $('#txtstate').val(),
         Address: $('#txtaddress').val(),
-        Phone: $('#txtphone1').val(),
+        //Phone: $('#txtphone1').val(),
         ContactPerson: $('#txtcontactperson').val(),
-        MobileNo: $('#txtphone2').val(),
+       MobileNo: $('#txtphone2').val(),
         EmailId: $('#txtemail').val(),
         IsActive: fbStatus,
         Description: $('#txtDescription').val(),

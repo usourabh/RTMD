@@ -8,7 +8,7 @@ namespace RTMDOTProject.COMMON
     public class StoredProcedureHelper
     {
         #region MON Stored Procedure
-        public const string spGetDevice_WithPaging = "[dbo].[spGetDevice_WithPaging] '{0}','{1}','{2}',{3},{4}";
+        public const string spGetDevice_WithPaging = "[dbo].[spGetDevice_WithPaging] '{0}','{1}','{2}','{3}','{4}'";
         public const string spInsertVaccineBoxTransaction = "[dbo].[sp_InsertVaccineBoxTransaction] '{0}','{1}','{2}','{3}'";
         public const string spGetInActiveDevice_WithPaging = "[dbo].[spGetInActiveDevice_WithPaging] '{0}','{1}','{2}',{3},{4}";
         public const string ActiveAlarmDevice_WithPaging = "[dbo].[ActiveAlarmDevice_WithPaging] '{0}','{1}','{2}',{3},{4}";
@@ -18,10 +18,11 @@ namespace RTMDOTProject.COMMON
         public const string spGetDeviceRecentTransactionByImei = "[dbo].[spGetDeviceRecentTransactionByImei] '{0}'";
         public const string sp_GetInActiveDevice = "[dbo].[sp_GetInActiveDevice_del] '{0}','{1}','{2}',{3},{4}";
         public const string sp_GetHistrory = "[dbo].[sp_GetHistrory] '{0}','{1}','{2}'";
-        public const string spGetRDMasterData = "[dbo].[spGetRDMasterData] '{0}','{1}','{2}',{3},{4}";
+       // public const string spGetRDMasterData = "[dbo].[spGetRDMasterData] '{0}','{1}','{2}',{3},{4}";
         public const string spGetSurveyTransData = "[dbo].[spGetSurveyTransData] '{0}','{1}','{2}',{3},{4}";
         public const string spGetDeviceTransactionByRange = "[dbo].[spGetDeviceTransactionByRange] '{0}','{1}','{2}',{3}";
-        public const string ReportByDuration = "[dbo].[DeviceReportByDurationByDuration] '{0}','{1}','{2}',{3},{4},'{5}','{6}'";
+       public const string ReportByDuration = "[dbo].[DeviceReportByDurationByDuration] '{0}','{1}','{2}',{3},{4},'{5}','{6}'";
+       
         #endregion
 
 
