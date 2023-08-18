@@ -1357,6 +1357,7 @@ E:\RTMD\RTMDOTProject\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\Sy
 E:\RTMD\RTMDOTProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\RTMD\RTMDOTProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\RTMD\RTMDOTProject\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
+E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\RTMDOTProject.csproj.AssemblyReference.cache
 E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\RTMDOTProject.AssemblyInfoInputs.cache
 E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\RTMDOTProject.AssemblyInfo.cs
 E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\RTMDOTProject.csproj.CoreCompileInputs.cache
@@ -1407,4 +1408,3 @@ E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\staticwebassets\RTMDOTProject.Stat
 E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\RTMDOTProject.dll
 E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\RTMDOTProject.pdb
 E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\RTMDOTProject.genruntimeconfig.cache
-E:\RTMD\RTMDOTProject\obj\Debug\netcoreapp3.1\RTMDOTProject.csproj.AssemblyReference.cache

@@ -41,6 +41,9 @@ namespace RTMDOTProject.Controllers
             //                              0,
             //                              -1,
             //                            };
+
+
+            // string Result = _dataRepository.ExcuteRowSqlCommand(StoredProcedureHelper.spGetRDMasterData, parameters);
             object[] parameters = {
 
                                           "",
@@ -51,7 +54,6 @@ namespace RTMDOTProject.Controllers
                                         };
            
 
-            // string Result = _dataRepository.ExcuteRowSqlCommand(StoredProcedureHelper.spGetRDMasterData, parameters);
             string Result = _dataRepository.ExcuteRowSqlCommand(StoredProcedureHelper.spGetDevice_WithPaging, parameters);
 
             return new JsonResult(Result);
